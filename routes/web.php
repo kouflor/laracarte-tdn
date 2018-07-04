@@ -25,3 +25,19 @@ Route::get('/about', [
 
 	]);
 
+
+/** creation d'une route pour la page contact
+Route::get('/contact', [
+		'as' => 'contact_path',
+		'uses' => 'PagesController@contact'
+
+	]);
+	*/
+
+
+//creation d'une route pour la page contact avec creation de 1 controller et un dossier messages dans views
+Route::get('/contact', [
+		'as' => 'contact_path',
+		'uses' => 'contactsController@create'
+
+	]);

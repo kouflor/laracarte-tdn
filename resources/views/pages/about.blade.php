@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'About '])
 
 @section('content')
        <h1 class="text-center">About</h1>
@@ -11,7 +11,7 @@
 			<i class="fa fa-warning"></i>
 			 <strong>This app has been built by <a href="https://twitter.com/etsmo" target="_blank"> @etsmo</a> for learning purposes.</strong>
 		</p>
-		<p>Feel free to help to improve the <a href="https://github.com/mercuryseries/laracarte" target="_blank"> source code.</a></p>
+		<p>Feel free to help to improve the <a href="https://github.com/kouflor/laracarte-tdn.git" target="_blank"> source code.</a></p>
 		
 		</div>
 		</div>		

@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Mail\EmailCreer;
+
+
 
 Route::get('/', [
 		'as' => 'root_path',
@@ -26,6 +29,11 @@ Route::get('/about', [
 	]);
 
 
+Route::get('/test-email', function() {
+    return new EmailCreer('kouakou florentin', 'kouflor@gmail.com', 'Dieu merci pour tout...');
+});
+
+
 /** creation d'une route pour la page contact
 Route::get('/contact', [
 		'as' => 'contact_path',
@@ -39,5 +47,12 @@ Route::get('/contact', [
 Route::get('/contact', [
 		'as' => 'contact_path',
 		'uses' => 'contactsController@create'
+
+	]);
+
+
+Route::post('/contact', [
+		'as' => 'contact_path',
+		'uses' => 'contactsController@store'
 
 	]);

@@ -30,7 +30,7 @@ Route::get('/about', [
 
 
 Route::get('/test-email', function() {
-    return new EmailCreer('kouakou florentin', 'kouflor@gmail.com', 'Dieu merci pour tout...');
+    return new EmailCreer();
 });
 
 

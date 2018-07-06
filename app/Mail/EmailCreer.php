@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+
+use App\Models\MessageSave;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,19 +13,16 @@ class EmailCreer extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name;
-    public $email;
     public $msg;
+    
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $email, $msg)
+    public function __construct(MessageSave $msg)
     {
-        $this->name = $name;
-        $this->email = $email;
         $this->msg = $msg;
     }
 

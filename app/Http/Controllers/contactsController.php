@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MessageSave;
 use App\Http\Requests\ContactRequest;
 use App\Mail\EmailCreer;
 use Illuminate\Http\Request;
@@ -16,10 +17,26 @@ class contactsController extends Controller
 
     public function store(ContactRequest $request)
     {
-    	$mailable = new EmailCreer($request->name, $request->email, $request->message);
+    	
+        $message = MessageSave::create($request->only('name', 'email', 'message'));
 
-    	Mail::to('kouflor@gmail.com')->send($mailable);
+        /*
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->message = $request->message;
+        $message->save();
+        */
 
-    	return 'Envoyer avec succes';
+        //$mailable = new EmailCreer($message);
+
+
+    	//Mail::to(config('laracarte.admin_support_email')
+    //)->send($mailable);
+            Mail::to(config('laracarte.admin_support_email')
+    )->send(new EmailCreer($message));
+
+    	flashy('nous vous repondrons dans les plus bref delais');
+
+    	return redirect()->route('root_path');
     }
 }
